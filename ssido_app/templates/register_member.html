@@ -79,6 +79,17 @@
 		}
 
 	}
+
+	</script>
+	
+<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126632343-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-126632343-1');
 	</script>
 
 
@@ -88,7 +99,6 @@
 	<form method="post" name="frm" action="./register_member_db/">
 
 		{%csrf_token %}
-		로그인을 해 보십시오 ^&^
 
 		ID: <input type="text" id="user_id" name="user_id">
 		<button type="button" onclick="check_id();"> 중복검사 </button>
