@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+	<title></title>
+	<style type="text/css">
+		.a{
+			width:50%; 
+			height:100%; 
+			background-color:red; 	
+			float:left; 
+			position: relative;
+		}
+		.inner_a{
+			width: 50%; 
+			height: 50%; 
+			background-color:yellow; 
+			position: absolute; 
+			top: 50%; 
+			left:50%; 
+			transform: translate(-50%,-50%);
+		}
+	</style>
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<script type="text/javascript">
+		function change_div(){
+			var red_div = document.getElementById("red_div");
+			var yellow_div = document.getElementById("yellow_div");
+			var white_div = document.getElementById("white_div");
+			var black_div = document.getElementById("black_div");
+			
+			//alert(red_div);
+			//alert(red_div.style.backgroundColor);
+
+			var top_value;
+			var left_value;
+			var z_index_value;
+			var opacity_value;
+			var position_value_array=["60%","55%","50%","45%"];
+			var arr=[red_div,yellow_div,white_div,black_div];
+
+			for (var i=0;i<arr.length;i++){
+				if(arr[i].style.zIndex=='4'){
+					top_value="60%";
+					left_value="60%";
+					z_index_value='1';
+				}
+
+				else{
+					top_value=position_value_array[arr[i].style.zIndex];
+					left_value=position_value_array[arr[i].style.zIndex];
+					z_index_value=String(parseInt(arr[i].style.zIndex) +1);
+					opacity_value=0.5;
+					}
+
+				if(arr[i].style.zIndex == '3'){
+					opacity_value='1';
+				}
+				
+				$('#' + arr[i].id).animate({
+					top: top_value,
+					left: left_value,
+					opacity : opacity_value
+				})
+				.css({
+					'z-index': z_index_value
+				});
+			}
+
+			/*
+			if(yellow_div.style.zIndex=='4'){
+				top_value="60%";
+				left_value="60%";
+				z_index_value='1';
+			}
+			else{
+				top_value=position_value_array[yellow_div.style.zIndex];
+				left_value=position_value_array[yellow_div.style.zIndex];
+				z_index_value=String(parseInt(yellow_div.style.zIndex) +1);
+			}
+			$("#yellow_div").animate({
+				top: top_value,
+				left: left_value
+			})
+			.css({
+				'z-index': z_index_value
+			});
+
+
+			if(white_div.style.zIndex=='4'){
+				top_value="60%";
+				left_value="60%";
+				z_index_value='1';
+			}
+			else{
+				top_value=position_value_array[white_div.style.zIndex];
+				left_value=position_value_array[white_div.style.zIndex];
+				z_index_value=String(parseInt(white_div.style.zIndex) +1);
+			}
+			$("#white_div").animate({
+				top: top_value,
+				left: left_value
+			})
+			.css({
+				'z-index': z_index_value
+			});
+
+
+			if(black_div.style.zIndex=='4'){
+				top_value="60%";
+				left_value="60%";
+				z_index_value='1';
+			}
+			else{
+				top_value=position_value_array[black_div.style.zIndex];
+				left_value=position_value_array[black_div.style.zIndex];
+				z_index_value=String(parseInt(black_div.style.zIndex) +1);
+			}
+			$("#black_div").animate({
+				top: top_value,
+				left: left_value
+			})
+			.css({
+				'z-index': z_index_value
+			});
+		*/
+		}
+	</script>
+
+</head>
+
+<body style="height: 2000px; margin:0;">
+	<div style="width: 100%; height:30%; background-color:green;">
+		<div class="a">
+			<div class="inner_a">
+				
+			</div>
+		</div>
+
+		<div class="a" style="background-color: blue;">
+			
+			<div id="black_div" class="inner_a" style="background-color:black; top: 60%; left:60%;z-index:1;">
+				
+			</div>
+			
+			<div id="white_div"class="inner_a" style="background-color:white; top: 55%; left:55%;z-index:2;">
+				
+			</div>
+			<div id="yellow_div"class="inner_a" style="background-color:yellow; top: 50%; left:50%;z-index:3;">
+				
+			</div>
+		
+			<div id="red_div" class="inner_a" style="background-color:red; top: 45%; left:45%; z-index:4;">
+				
+			</div>
+		
+		</div>
+	</div>
+	<button onclick="change_div()">Click</button>
+
+</body>
+
+</html>
